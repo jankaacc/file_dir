@@ -1,0 +1,46 @@
+- name: create file
+  file_dir:
+    path: file
+    state: file
+
+- name: create file under nested directory
+  file_dir:
+    path: foo/bar/file
+    state: file
+    nested: true
+
+- name: create directory
+  file_dir:
+    path: dir
+    state: directory
+
+- name: create nested directory
+  file_dir:
+    path: dir/foo/bar
+    state: directory
+    nested: true
+
+- name: delete file
+  file_dir:
+    path: foo/bar/file
+    state: absent
+
+- name: delete dir
+  file_dir:
+    path: dir
+    state: absent
+
+- name: delete non empty dir
+  file_dir:
+    path: foo
+    state: absent
+
+- name: delete non existing file
+  file_dir:
+    path: file_non_existing
+    state: absent
+
+- name: delete non existing dir
+  file_dir:
+    path: dir_non_existing
+    state: absent
